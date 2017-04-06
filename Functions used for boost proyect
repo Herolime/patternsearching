@@ -1,0 +1,42 @@
+#Functions that are actually part of the program
+import requests
+from bs4 import BeautifulSoup as soup
+import json
+
+from bs4 import BeautifulSoup
+ def finaltest(snum):
+         park ="https://yeezysupply.com/collections/s%s" %(snum)
+         r = requests.get(park)
+         souping = soup(r.content)
+         for link in  souping.find_all("a", {"ProductGridItem js-link type-S4 ","href"}):
+             print "<a class=\" %s\" href=\"%s\">" %("ProductGridItem js-link type-S4 ", link.get('href'))
+finaltest() """it must take an a string for an argument with a number. Ex: "2", "3". This function will give you the item
+in the yeezysupply section you are looking for"""
+
+#Functions that are used for parsing/research purposes
+def test7(url, tags, clas, info):
+    ...:     r = requests.get(url)
+    ...:     souping = soup(r.content)
+    ...:     for link in  souping.find_all(tags, {clas, info}):
+    ...:         print "<a class=\" %s\" href=\"%s\">" %(clas, link.get('href'))
+	
+
+In [44]: def test6(url, tags, clas, info):
+    ...:     r = requests.get(url)
+    ...:     souping = soup(r.content)
+    ...:     print souping.find_all(tags, {clas, info})
+	
+ def test5(url, tags):
+    ...:     r = requests.get(url)
+    ...:     souping = soup(r.content)
+    ...:     print souping.find_all(tags)
+
+ def test3(url):
+    ...:     r = requests.get(url)
+    ...:     souping = soup(r.content)
+    ...:     print (souping.prettify())
+
+ def secondtest(url):
+    ...:     r = requests.get(url)
+    ...:     req = json.loads(r.content)
+    ...:     print req
